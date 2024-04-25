@@ -25,14 +25,15 @@ class ParserSerializer implements SerializerInterface
     }
 
     /**
-     * @param object $object
-     * @param string $formatter
-     * @param SerializationContext|null $context
-     * @return string
+     * Serializes the given data to the specified output format.
+     *
+     * @param mixed $data
+     *
+     * @throws RuntimeException
      */
-    public function serialize($object, $formatter = Formatter::JSON, SerializationContext $context = null)
+    public function serialize($data, string $format, ?SerializationContext $context = null, ?string $type = null): string
     {
-        return $this->serializer->serialize($object, $formatter, $context);
+        return $this->serializer->serialize($data, $format, $context);
     }
 
     /**
@@ -49,4 +50,4 @@ class ParserSerializer implements SerializerInterface
         }
         return $this->serializer->deserialize($data, $type, $formatter, $context);
     }
-} 
+}

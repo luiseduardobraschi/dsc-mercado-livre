@@ -14,12 +14,13 @@ use JMS\Serializer\SerializerInterface as JMSSerializerInterface;
 interface SerializerInterface extends JMSSerializerInterface
 {
     /**
-     * @param object $object
-     * @param string $format
-     * @param SerializationContext|null $context
-     * @return mixed
+     * Serializes the given data to the specified output format.
+     *
+     * @param mixed $data
+     *
+     * @throws RuntimeException
      */
-    public function serialize($object, $format = Formatter::JSON, SerializationContext $context = null);
+    public function serialize($data, string $format, ?SerializationContext $context = null, ?string $type = null): string;
 
     /**
      * @param string $data
@@ -29,4 +30,4 @@ interface SerializerInterface extends JMSSerializerInterface
      * @return mixed
      */
     public function deserialize($data, $type, $format = Formatter::JSON, DeserializationContext $context = null);
-} 
+}

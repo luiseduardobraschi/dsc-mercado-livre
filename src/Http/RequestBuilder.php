@@ -7,6 +7,7 @@
  */
 namespace Dsc\MercadoLivre\Http;
 
+use Dsc\MercadoLivre\Parser\Formatter;
 use Dsc\MercadoLivre\Parser\SerializerInterface;
 
 class RequestBuilder
@@ -39,6 +40,6 @@ class RequestBuilder
         if(is_array($this->data)) {
             return \GuzzleHttp\json_encode($this->data);
         }
-        return $this->serializer->serialize($this->data);
+        return $this->serializer->serialize($this->data, Formatter::JSON);
     }
 }
